@@ -2,11 +2,13 @@
 ## 项目简介
 基于 [fatedier/frp](https://github.com/fatedier/frp) 原版 frp 内网穿透客户端 frpc 的一键安装卸载脚本和 docker 镜像.支持群晖NAS,Linux 服务器和 docker 等多种环境安装部署.
 
-- GitHub [stilleshan/frpc](https://github.com/stilleshan/frpc)
-- Docker [stilleshan/frpc](https://hub.docker.com/r/stilleshan/frpc)
-> *docker image support for X86 and ARM*
+- GitHub [aircross/frpc](https://github.com/aircross/frpc)
+- Docker [aircross/frpc](https://hub.docker.com/r/aircross/frpc)
+> *docker image support for X86 and ARM64/ARM32*
 
 ## 更新
+**2021-09-26** 增加ARM32架构支持   
+
 **2021-05-31** 更新国内镜像方便使用  
 **2021-05-31** 目前 X86 群晖 DMS 7.0 可直接使用 Linux 版本脚本,已实测.由于没有 ARM 版可尝试,请自行尝试.  
 **2021-05-31** 更新 Linux 一键安装脚本同时支持 X86 和 ARM  
@@ -24,9 +26,9 @@
 
 安装
 ```shell
-wget https://raw.githubusercontent.com/stilleshan/frpc/master/frpc_linux_install.sh && chmod +x frpc_linux_install.sh && ./frpc_linux_install.sh
+wget https://raw.githubusercontent.com/aircross/frpc/master/frpc_linux_install.sh && chmod +x frpc_linux_install.sh && ./frpc_linux_install.sh
 # 国内 gitee 镜像
-wget https://gitee.com/stilleshan/frpc/raw/master/frpc_linux_install.sh && chmod +x frpc_linux_install.sh && ./frpc_linux_install.sh
+wget https://gitee.com/aircross/frpc/raw/master/frpc_linux_install.sh && chmod +x frpc_linux_install.sh && ./frpc_linux_install.sh
 ```
 
 使用
@@ -39,9 +41,9 @@ sudo systemctl restart frpc
 
 卸载
 ```shell
-wget https://raw.githubusercontent.com/stilleshan/frpc/master/frpc_linux_uninstall.sh && chmod +x frpc_linux_uninstall.sh && ./frpc_linux_uninstall.sh
+wget https://raw.githubusercontent.com/aircross/frpc/master/frpc_linux_uninstall.sh && chmod +x frpc_linux_uninstall.sh && ./frpc_linux_uninstall.sh
 # 国内 gitee 镜像
-wget https://gitee.com/stilleshan/frpc/raw/master/frpc_linux_uninstall.sh && chmod +x frpc_linux_uninstall.sh && ./frpc_linux_uninstall.sh
+wget https://gitee.com/aircross/frpc/raw/master/frpc_linux_uninstall.sh && chmod +x frpc_linux_uninstall.sh && ./frpc_linux_uninstall.sh
 ```
 
 ### Linux 服务器 docker 安装
@@ -49,7 +51,7 @@ wget https://gitee.com/stilleshan/frpc/raw/master/frpc_linux_uninstall.sh && chm
 
 先 **git clone** 本仓库,并正确配置 **frpc.ini** 文件.
 ```shell
-git clone https://gitee.com/stilleshan/frpc.git
+git clone https://gitee.com/aircross/frpc.git
 # git clone 本仓库 gitee 镜像
 vi /root/frpc/frpc.ini
 # 配置 frpc.ini 文件
@@ -75,10 +77,11 @@ docker restart frpc
 
 ## 相关链接
 更多frp相关信息可参考我的博客
-- Blog [www.ioiox.com](https://www.ioiox.com)
-- GitHub [stilleshan/frpc](https://github.com/stilleshan/frpc)
-- Docker [stilleshan/frpc](https://hub.docker.com/r/stilleshan/frpc)
+- VPS推荐 [VPS.la](https://www.vps.la)
+- GitHub [aircross/frpc](https://github.com/aircross/frpc)
+- Docker [aircross/frpc](https://hub.docker.com/r/aircross/frpc)
 - 原版frp项目 [fatedier/frp](https://github.com/fatedier/frp)
+- 原版frp Docker项目 [stilleshan/frpc](https://github.com/stilleshan/frpc)
 - [群晖NAS使用Docker安装配置frpc内网穿透教程](https://www.ioiox.com/archives/26.html) 
 - [群晖NAS安装配置免费frp内网穿透教程](https://www.ioiox.com/archives/6.html)
 - [新手入门 - 详解 frp 内网穿透 frpc.ini 配置](https://www.ioiox.com/archives/79.html)
