@@ -19,7 +19,13 @@
 - 群晖 NAS docker 安装 **[支持 docker 的群晖机型首选]** [点击查看教程](https://www.ioiox.com/archives/26.html)
 - 群晖 NAS 一键脚本安装 **[不支持 docker 的群晖机型]** [点击查看教程](https://www.ioiox.com/archives/6.html)
 - Linux 服务器 一键脚本安装 **[内网 Linux 服务器或虚拟机]**
+  - 执行命令拉取并运行容器：docker run -it -d --name frpc --net=host --restart=always --privileged aircross/frpc_docker init
+  - 执行命令进入修改配置：docker exec -it trojan bash
+  - 根据实际情况修改配置文件：vi /usr/local/frp/frpc.ini
+  - FPRS服务端：server_addr = frp.freefrp.net
+  - FRPS服务端对接Token：token = freefrp.net
 - Linux 服务器 docker 安装 **[内网 Linux 服务器或虚拟机]**
+- 默认使用的服务器是：frp.freefrp.net
 
 ### Linux 服务器 一键脚本安装
 > *本脚本目前同时支持 Linux X86 和 ARM 架构*
