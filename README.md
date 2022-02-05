@@ -26,18 +26,31 @@
 - 群晖 NAS docker 安装 **[支持 docker 的群晖机型首选]** [点击查看教程](https://www.ioiox.com/archives/26.html)
 - 群晖 NAS 一键脚本安装 **[不支持 docker 的群晖机型]** [点击查看教程](https://www.ioiox.com/archives/6.html)
 - Linux 服务器 一键脚本安装 **[内网 Linux 服务器或虚拟机]**
+  - 执行下面的命令创建配置文件的目录和文件
+    - ```shell
+      mkdir /opt/frp
+      mkdir /opt/frp
+      echo "[common]">>/opt/frp/frpc.ini
+      echo "server_addr = nat.vps.la">>/opt/frp/frpc.ini
+      echo "server_port = 7000">>/opt/frp/frpc.ini
+      echo "token = nat.vps.la">>/opt/frp/frpc.ini
+      ```
+    
   - 执行命令拉取并运行容器：
-    - docker run -it -d --name frpc --net=host --restart=always --privileged aircross/frpc_docker init
-  - 执行命令进入修改配置：
-    - docker exec -it trojan bash
+    - docker run -d --name frpc --restart=always -v /opt/frp/frpc.ini:/frp/frpc.ini aircross/frpc_docker
+  - 执行命令进入容器：
+    - docker exec -it frpc sh
   - 根据实际情况修改配置文件：
-    - vi /usr/local/frp/frpc.ini
+    - vi /opt/frp/frpc.ini
   - FPRS服务端：
-    - server_addr = frp.freefrp.net
+    - server_addr = nat.vps.la
   - FRPS服务端对接Token：
-    - token = freefrp.net
+    - token = nat.vps.la
+  - 修改完成后执行下面的命令重启容器生效：
+    - docker restart frpc
+  
 - Linux 服务器 docker 安装 **[内网 Linux 服务器或虚拟机]**
-- 默认使用的服务器是：frp.freefrp.net
+- 默认使用的服务器是：nat.vps.la
 
 ### Linux 服务器 一键脚本安装
 > *本脚本目前同时支持 Linux X86 和 ARM 架构*
@@ -75,7 +88,7 @@ vi /root/frpc/frpc.ini
 
 执行以下命令启动服务
 ```shell
-docker run -d --name=frpc --restart=always -v /root/frpc/frpc.ini:/frp/frpc.ini stilleshan/frpc
+docker run -d --name=frpc --restart=always -v /root/frpc/frpc.ini:/frp/frpc.ini aircross/frpc_docker
 ```
 > 以上命令 -v 挂载的目录是以 git clone 本仓库为例,也可以在任意位置手动创建 frpc.ini 文件,并修改命令中的挂载路径.
 
