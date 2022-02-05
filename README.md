@@ -101,7 +101,12 @@ docker restart frpc
 # 重启 frpc 容器即可生效
 ```
 
+执行下面的命令进入Docker查看及执行其他命令：
+```shell
+docker exec -it frpc sh
+```
 ## 版本更新
+
 - latest 为最新版
 - Tags 为历史版本
 
