@@ -1,7 +1,7 @@
 FROM alpine:3.8
 MAINTAINER John <admin@vps.la>
 
-ENV FRP_VERSION 0.39.0
+ENV FRP_VERSION 0.48.0
 WORKDIR /
 
 RUN set -xe && \
