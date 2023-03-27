@@ -22,4 +22,5 @@ RUN set -x && \
 
 VOLUME /frp
 
+
 CMD /frp/frpc -c /frp/frpc.ini
