@@ -3,8 +3,9 @@
 基于 [fatedier/frp](https://github.com/fatedier/frp) 原版 frp 内网穿透客户端 frpc 的一键安装卸载脚本和 docker 镜像.支持群晖NAS,Linux 服务器和 docker 等多种环境安装部署.
 
 - GitHub [aircross/frpc_docker](https://github.com/aircross/frpc)
+- Gitee [aircross/frpc_docker](https://gitee.com/aircross/frpc)
 - Docker [aircross/frpc_docker](https://hub.docker.com/r/aircross/frpc_docker)
-> *docker image 支持X86 and ARM64/ARM32*
+> *docker 镜像支持X86/ARM64/ARM32*
 
 ## 更新日志
 
@@ -67,7 +68,9 @@
 
 安装
 ```shell
-wget https://raw.githubusercontent.com/aircross/frpc/master/frpc_linux_install.sh && chmod +x frpc_linux_install.sh && ./frpc_linux_install.sh
+wget https://raw.githubusercontent.com/aircross/frpc_docker/master/frpc_linux_install.sh && chmod +x frpc_linux_install.sh && ./frpc_linux_install.sh
+#国内Gitee镜像
+wget https://gitee.com/aircross/frpc_docker/raw/master/frpc_linux_uninstall.sh && chmod +x frpc_linux_uninstall.sh && ./frpc_linux_uninstall.sh
 ```
 
 使用
@@ -89,6 +92,8 @@ wget https://raw.githubusercontent.com/aircross/frpc/master/frpc_linux_uninstall
 先 **git clone** 本仓库,并正确配置 **frpc.ini** 文件.
 ```shell
 git clone https://github.com/aircross/frpc_docker.git
+# 国内 gitee 镜像
+git clone https://gitee.com/aircross/frpc_docker.git
 # git clone 本仓库镜像
 vi /root/frpc/frpc.ini
 # 配置 frpc.ini 文件
