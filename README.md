@@ -2,6 +2,29 @@
 ## 项目简介
 基于 [fatedier/frp](https://github.com/fatedier/frp) 原版 frp 内网穿透客户端 frpc 的一键安装卸载脚本和 docker 镜像.支持群晖NAS,Linux 服务器和 docker 等多种环境安装部署.
 
+
+<!-- PROJECT SHIELDS -->
+
+[![Docker Pulls][docker-pulls-shield]][docker-pulls-url]
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+[![MIT License][license-shield]][license-url]
+
+[docker-pulls-shield]: https://img.shields.io/docker/pulls/aircross/frpc_docker.svg?style=flat-square
+[docker-pulls-url]: https://hub.docker.com/r/aircross/frpc_docker
+[contributors-shield]: https://img.shields.io/github/contributors/aircross/frpc_docker.svg?style=flat-square
+[contributors-url]: https://github.com/aircross/frpc_docker/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/aircross/frpc_docker.svg?style=flat-square
+[forks-url]: https://github.com/aircross/frpc_docker/network/members
+[stars-shield]: https://img.shields.io/github/stars/aircross/frpc_docker.svg?style=flat-square
+[stars-url]: https://github.com/aircross/frpc_docker/stargazers
+[issues-shield]: https://img.shields.io/github/issues/aircross/frpc_docker.svg?style=flat-square
+[issues-url]: https://github.com/aircross/frpc_docker/issues
+[license-shield]: https://img.shields.io/github/license/aircross/frpc_docker.svg?style=flat-square
+[license-url]: https://github.com/aircross/frpc_docker/blob/main/LICENSE
+
 - GitHub [aircross/frpc_docker](https://github.com/aircross/frpc_docker)
 - Gitee [aircross/frpc_docker](https://gitee.com/aircross/frpc_docker)
 - Docker [aircross/frpc_docker](https://hub.docker.com/r/aircross/frpc_docker)
