@@ -4,7 +4,7 @@
 
 - GitHub [aircross/frpc_docker](https://github.com/aircross/frpc)
 - Docker [aircross/frpc_docker](https://hub.docker.com/r/aircross/frpc_docker)
-> *docker image support for X86 and ARM64/ARM32*
+> *docker image 支持X86 and ARM64/ARM32*
 
 ## 更新日志
 
