@@ -30,22 +30,22 @@
 - 群晖 NAS 一键脚本安装 **[不支持 docker 的群晖机型]** [点击查看教程](https://www.ioiox.com/archives/6.html)
 - Linux 服务器 一键脚本安装 **[内网 Linux 服务器或虚拟机]**
   - 安装Docker
-    - ```
-      curl -fsSL https://get.docker.com | sh
-      # 设置开机自启
-      sudo systemctl enable docker.service
-      # 根据实际需要保留参数start|restart|stop
-      sudo service docker start|restart|stop
-      ```
+```
+curl -fsSL https://get.docker.com | sh
+# 设置开机自启
+sudo systemctl enable docker.service
+# 根据实际需要保留参数start|restart|stop
+sudo service docker start|restart|stop
+```
   - 执行下面的命令创建配置文件的目录和文件
-    - ```shell
-      mkdir /opt/frp
-      cd /opt/frp
-      echo "[common]">>/opt/frp/frpc.ini
-      echo "server_addr = nat.vps.la">>/opt/frp/frpc.ini
-      echo "server_port = 7000">>/opt/frp/frpc.ini
-      echo "token = nat.vps.la">>/opt/frp/frpc.ini
-      ```
+```shell
+mkdir /opt/frp
+cd /opt/frp
+echo "[common]">>/opt/frp/frpc.ini
+echo "server_addr = nat.vps.la">>/opt/frp/frpc.ini
+echo "server_port = 7000">>/opt/frp/frpc.ini
+echo "token = nat.vps.la">>/opt/frp/frpc.ini
+```
     
   - 执行命令拉取并运行容器：
     - docker run -d --name frpc --restart=always -v /opt/frp/frpc.ini:/frp/frpc.ini aircross/frpc_docker
