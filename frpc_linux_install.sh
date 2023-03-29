@@ -21,7 +21,8 @@ if [ $(uname -m) = "x86_64" ]; then
     export PLATFORM=amd64
 else if [ $(uname -m) = "aarch64" ]; then
     export PLATFORM=arm64
-fi
+else if [[ $(uname -m | grep 'riscv64') != "" ]]; then
+    export PLATFORM=riscv64
 fi
 
 FILE_NAME=frp_${FRP_VERSION}_linux_${PLATFORM}
