@@ -39,7 +39,7 @@
   - 执行下面的命令创建配置文件的目录和文件
     - ```shell
       mkdir /opt/frp
-      mkdir /opt/frp
+      cd /opt/frp
       echo "[common]">>/opt/frp/frpc.ini
       echo "server_addr = nat.vps.la">>/opt/frp/frpc.ini
       echo "server_port = 7000">>/opt/frp/frpc.ini
@@ -81,8 +81,6 @@ sudo systemctl restart frpc
 卸载
 ```shell
 wget https://raw.githubusercontent.com/aircross/frpc/master/frpc_linux_uninstall.sh && chmod +x frpc_linux_uninstall.sh && ./frpc_linux_uninstall.sh
-# 国内 gitee 镜像
-wget https://gitee.com/aircross/frpc/raw/master/frpc_linux_uninstall.sh && chmod +x frpc_linux_uninstall.sh && ./frpc_linux_uninstall.sh
 ```
 
 ### Linux 服务器 docker 安装
@@ -90,8 +88,8 @@ wget https://gitee.com/aircross/frpc/raw/master/frpc_linux_uninstall.sh && chmod
 
 先 **git clone** 本仓库,并正确配置 **frpc.ini** 文件.
 ```shell
-git clone https://gitee.com/aircross/frpc.git
-# git clone 本仓库 gitee 镜像
+git clone https://github.com/aircross/frpc_docker.git
+# git clone 本仓库镜像
 vi /root/frpc/frpc.ini
 # 配置 frpc.ini 文件
 ```
