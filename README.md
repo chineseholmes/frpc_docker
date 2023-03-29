@@ -2,10 +2,15 @@
 ## 项目简介
 基于 [fatedier/frp](https://github.com/fatedier/frp) 原版 frp 内网穿透客户端 frpc 的一键安装卸载脚本和 docker 镜像.支持群晖NAS,Linux 服务器和 docker 等多种环境安装部署.
 
-- GitHub [aircross/frpc_docker](https://github.com/aircross/frpc)
-- Gitee [aircross/frpc_docker](https://gitee.com/aircross/frpc)
+- GitHub [aircross/frpc_docker](https://github.com/aircross/frpc_docker)
+- Gitee [aircross/frpc_docker](https://gitee.com/aircross/frpc_docker)
 - Docker [aircross/frpc_docker](https://hub.docker.com/r/aircross/frpc_docker)
 > *docker 镜像支持X86/ARM64/ARM32*
+
+|                                                           | Tag    | amd64 | arm64 | armv7 |
+| ---------------------------------------------------------------------------------- | ------ | ------ | ----- | ------ |
+| GitHub [aircross/frpc_docker](https://github.com/aircross/frpc_docker)             | latest | ✅    | ✅    | ✅    |
+| Docker [aircross/frpc_docker](https://hub.docker.com/r/aircross/frpc_docker)       | latest | ✅    | ✅    | ✅    |
 
 ## 更新日志
 
