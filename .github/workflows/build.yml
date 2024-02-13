@@ -1,72 +1,48 @@
-name: "docker build release"
+name: "build and push to hub.docker.com"
 
 on:
   push:
-  workflow_dispatch:
-
-env:
-  PROJECT: frpc
+    paths:
+      - 'Dockerfile'
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      ACTIONS_ALLOW_UNSECURE_COMMANDS: true
     steps:
       - name: Checkout
-        uses: actions/checkout@v2.3.5
-
+        uses: actions/checkout@v2
       - name: Set tag
         id: tag
         run: |
-          if [[ -n $(cat Dockerfile | awk '{if($1~"ENV" && $2=="VERSION")print $3}') ]]; then
-            VERSION=$(cat Dockerfile | awk '{if($1~"ENV" && $2=="VERSION")print $3}')
-            echo "tag=$VERSION" >> $GITHUB_ENV
-          else
-            echo "tag=$(date +%Y)-$(date +%m)-$(date +%d)" >> $GITHUB_ENV
-          fi
-
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v1
-
+          TAG=$(cat Dockerfile | awk 'NR==4 {print $3}')
+          echo "::set-env name=TAG::$TAG"
+      - name: Docker Hub login
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+        run: |
+          echo "${DOCKER_PASSWORD}" | docker login --username ${DOCKER_USERNAME} --password-stdin
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v1
-
-      - name: Login Docker Hub
-        uses: docker/login-action@v1 
+        id: buildx
+        uses: crazy-max/ghaction-docker-buildx@v1
         with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
-
-      - name: Build and push to docker hub
-        uses: docker/build-push-action@v2
-        with:
-          context: .
-          platforms: linux/amd64,linux/arm64,linux/arm/v7
-          push: true
-          tags: |
-            ${{ secrets.DOCKER_USERNAME }}/${{ env.PROJECT }}:latest
-            ${{ secrets.DOCKER_USERNAME }}/${{ env.PROJECT }}:${{ env.tag }}
-
-      - name: Sync README.md to Docker Hub
+          buildx-version: latest
+      - name: Build Dockerfile
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+        run: |
+          docker buildx build \
+          --platform=linux/amd64,linux/arm64,linux/arm/v7 \
+          --output "type=image,push=true" \
+          --file ./Dockerfile . \
+          --tag $(echo "${DOCKER_USERNAME}" | tr '[:upper:]' '[:lower:]')/${{ github.event.repository.name }}:latest \
+          --tag $(echo "${DOCKER_USERNAME}" | tr '[:upper:]' '[:lower:]')/${{ github.event.repository.name }}:${TAG}
+      - name: Sync README.md
         uses: ms-jpq/sync-dockerhub-readme@v1
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-          repository: ${{ secrets.DOCKER_USERNAME }}/${{ env.PROJECT }}
-          readme: "./README.md"
-
-      - name: Login harbor
-        uses: docker/login-action@v1 
-        with:
-          registry: ${{ secrets.HARBOR_REGISTRY }}
-          username: ${{ secrets.HARBOR_USERNAME }}
-          password: ${{ secrets.HARBOR_PASSWORD }}
-
-      - name: Build and push to harbor
-        uses: docker/build-push-action@v2
-        with:
-          context: .
-          platforms: linux/amd64,linux/arm64,linux/arm/v7
-          push: true
-          tags: |
-            ${{ secrets.HARBOR_REGISTRY }}/${{ secrets.HARBOR_USERNAME }}/${{ env.PROJECT }}:latest
-            ${{ secrets.HARBOR_REGISTRY }}/${{ secrets.HARBOR_USERNAME }}/${{ env.PROJECT }}:${{ env.tag }}
+          repository: ${{ secrets.DOCKER_USERNAME }}/${{ github.event.repository.name }}
+          readme: "README.md"
