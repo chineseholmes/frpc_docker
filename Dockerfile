@@ -15,7 +15,9 @@ RUN set -xe && \
 	else if [ "$(uname -m)" = "aarch64" ]; then export PLATFORM=arm64 ; \
 	else if [ "$(uname -m)" = "armv7" ]; then export PLATFORM=arm ; \
 	else if [ "$(uname -m)" = "armhf" ]; then export PLATFORM=arm ; \
-	else if [ "$(uname -m)" = "armv7l" ]; then export PLATFORM=arm ; fi && \
+	else if [ "$(uname -m)" = "armv7l" ]; then export PLATFORM=arm ; fi
+
+RUN set -xe && \
 	wget --no-check-certificate https://github.com/fatedier/frp/releases/download/v${FRP_VERSION}/frp_${FRP_VERSION}_linux_${PLATFORM}.tar.gz
 
 RUN set -xe && \
