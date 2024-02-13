@@ -22,7 +22,7 @@ RUN if [ "$(uname -m)" = "x86_64" ]; then export PLATFORM=amd64 ; \
 	&& mkdir /frp \
 	&& mv frpc frpc.ini /frp \
 	&& cd .. \
-	&& rm -rf *.tar.gz frp_${FRP_VERSION}_linux_${PLATF}
+	&& rm -rf *.tar.gz frp_${FRP_VERSION}_linux_${PLATFORM}
 
 VOLUME /frp
 
