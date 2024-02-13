@@ -1,4 +1,4 @@
-FROM alpine:3.8
+FROM alpine:latest
 MAINTAINER John <admin@vps.la>
 
 ENV FRP_VERSION 0.54.0
@@ -21,6 +21,5 @@ RUN set -x && \
 	rm -rf *.tar.gz frp_${FRP_VERSION}_linux_${PLATFORM}
 
 VOLUME /frp
-
 
 CMD /frp/frpc -c /frp/frpc.ini
