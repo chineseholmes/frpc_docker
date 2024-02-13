@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
 
 env:
-  PROJECT: frpc
+  PROJECT: frpc_docker
 
 jobs:
   build:
