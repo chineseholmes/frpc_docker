@@ -11,7 +11,7 @@ RUN set -xe && \
     apk del tzdata
 
 
-RUN set -xe && \
+RUN set -x && \
 	if [ "$(uname -m)" = "x86_64" ]; then export PLATFORM=amd64 ; \
 	elif [ "$(uname -m)" = "aarch64" ]; then export PLATFORM=arm64 ; \
 	elif [ "$(uname -m)" = "armv7" ]; then export PLATFORM=arm ; \
